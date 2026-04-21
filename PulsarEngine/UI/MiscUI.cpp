@@ -73,12 +73,6 @@ static void FixStartMessageFroom(CtrlRaceWifiStartMessage* startMsg, u32 bmgId, 
 }
 kmCall(0x807f8b7c, FixStartMessageFroom);
 
-static void DisplayDate(CtrlMenuPressStart* start) {
-    start->Load();
-    start->SetMessage(BMG_DATE);
-}
-kmCall(0x8063ac58, DisplayDate);
-
 static void CustomRoomDenyText(Pages::MessageBoxTransparent* msgBox, u32 bmgId, const Text::Info* info) {
     if (Pulsar::System::sInstance->netMgr.denyType == Network::DENY_TYPE_BAD_PACK) bmgId = BMG_ROOM_DENY;
     msgBox->SetMessageWindowText(bmgId, info);
