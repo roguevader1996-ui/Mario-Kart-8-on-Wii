@@ -1,6 +1,46 @@
 #include <kamek.hpp>
 
 namespace Pack{
+	
+// 1st Place Crown on Minimap based on Crown() from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L558
+// Licensed under GPL v3, modified by RogueVader1996.
+asmFunc Crown() {
+    ASM(
+  lwzx      r4, r4, r0;
+  li        r11, 0;
+  lbz       r12, 0x20(r4);
+  cmpwi     r12, 0x1;
+  bne-      storeCrownVisibility;
+  lwz       r12, 0xD728(r3);
+  lwz       r12, 0xB70(r12);
+  cmpwi     r12, 0x2;
+  blt-      setCrownVisible;
+  cmpwi     r12, 0x3;
+  beq-      hasEnoughBattlePoints;
+  cmpwi     r12, 0x7;
+  blt-      end;
+  cmpwi     r12, 0x9;
+  blt-      setCrownVisible;
+hasEnoughBattlePoints:
+  lhz       r12, 0x22(r4);
+  cmpwi     r12, 0x3;
+  blt-      storeCrownVisibility;
+setCrownVisible:
+  li        r11, 0x1;
+storeCrownVisibility:
+  lwz       r12, 0x1B8(r28);
+  stb       r11, 0x887(r12);
+  lha       r11, 0xB8(r12);
+  stb       r11, 0x884(r12);
+end:
+  blr;
+    )
+}
+kmCall(0x807EB490, Crown);
+
+
+// Kart Status On Minimap from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L694
+// Licensed under GPL v3.
 
 extern "C" void KartStatusEnd2(void*);
 extern "C" void KartStatusEnd3(void*);
