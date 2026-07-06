@@ -1868,5 +1868,42 @@ GetItemIconPaneName__F6ItemIdUi = 0x80860af0
 TimerToTextInfo__FRC5TimerRQ24Text4Info = 0x808608e4
 
 #IKW Features
-KartStatusEnd2= 0x807EB6E4
-KartStatusEnd3= 0x807EB9D0
+KartStatusEnd2 = 0x807EB6E4
+KartStatusEnd3 = 0x807EB9D0
+
+#Boo Additions
+sInstance__Q27Effects3Mgr = 0x809c21d0
+KillEffects__Q27Effects6PlayerFb = 0x806958f4
+Toggle__Q27Effects6PlayerFb = 0x80693d58
+UpdateGasSmokeEffects__Q27Effects6PlayerFv = 0x8069baf8
+GetPosition__Q24Kart4LinkCFv = 0x8059020c
+GetMtx__Q24Kart4LinkCFv = 0x80590264
+GetStats__Q24Kart4LinkCFv = 0x80590874
+GetPlayerIdx__Q24Kart4LinkCFv = 0x80590a5c
+ApplyLightning__Q24Kart8MovementFv = 0x80580438
+sqrt__Fd = 0x8022f80c
+GessoManager_createInstance = 0x807a8f04
+BRRESExists__13ModelDirectorF13ArchiveSourcePCc = 0x8055ba00
+LoadWithAnm__13ModelDirectorFPCcRQ34nw4r3g3d7ResFileP5Light = 0x8055c0e8
+PlayAnmNoBlend__18ModelTransformatorFUiff = 0x805573cc
+CtrlRace2DMapCharacter_calcSelf = 0x807eb250
+CtrlRaceNameBalloon_BaseDraw = 0x8063db84
+SetItemWithCount__Q24Item15PlayerInventoryF6ItemIdib = 0x807bc908
+SetItem__Q25RKNet11ITEMHandlerFUc6ItemId = 0x8065c6c0
+ClearAllAndDestroyDropItems__Q24Item15PlayerInventoryFv = 0x807bc9f4
+GetSpeed__Q24Kart4LinkCFv = 0x80590d08
+EjectItems__Q24Item15PlayerInventoryFv = 0x807bc350
+ptr_menuPageOrSomething = 0x809C2850
+fun_playSound = 0x8071497C
+ClearAll__Q24Item15PlayerInventoryFv = 0x807bc9c0
+GetTargetedPlayerId__Q24Item11ObjKouraRedCFv = 0x807ab894
+RedShellResetTargeting = 0x807b3ec0
+UpdateOffroad__Q24Kart8MovementFv = 0x8057c3d4
+CheckObjectCollision__Q24Kart9CollisionFv = 0x80571f10
+CheckItemCollision__Q24Kart9CollisionFv = 0x8057257c
+CheckKartCollision__Q24Item3ObjFPQ24Kart6PlayerUi = 0x807a14d4
+RedShellEvalTarget = 0x807b381c
+calcPow__Q24Kart8MovementFv = 0x805810a8
+LoseItemFromDmg__Q24Item15PlayerInventoryFv = 0x807bc610
+HasCamera__Q24Kart4LinkCFv = 0x80590de0
+GetScreenIdx__Q24Kart4LinkCFv = 0x80590e04

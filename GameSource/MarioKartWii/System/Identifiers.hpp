@@ -109,7 +109,8 @@ enum ItemObjId {
     OBJ_POW_BLOCK = 0xB,
     OBJ_THUNDER_CLOUD = 0xE,
     OBJ_BULLET_BILL = 0xD,
-    OBJ_NONE = 0x10
+    OBJ_NONE = 0x10,
+	OBJ_BOO = 0x11
 };
 
 enum ItemId {
