@@ -1909,3 +1909,6 @@ calcPow__Q24Kart8MovementFv = 0x805810a8
 LoseItemFromDmg__Q24Item15PlayerInventoryFv = 0x807bc610
 HasCamera__Q24Kart4LinkCFv = 0x80590de0
 GetScreenIdx__Q24Kart4LinkCFv = 0x80590e04
+
+#One Lap Music
+Calc__Q25Audio7RaceMgrFv = 0x80710ca0
