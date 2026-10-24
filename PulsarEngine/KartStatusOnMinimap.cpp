@@ -43,9 +43,6 @@ kmCall(0x807EB490, Crown);
 // Kart Status On Minimap from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L694
 // Licensed under GPL v3.
 
-extern "C" void KartStatusEnd2(void*);
-extern "C" void KartStatusEnd3(void*);
-
 asmFunc KartStatusOnMinimap1() {
   ASM(
     nofralloc;
@@ -57,6 +54,7 @@ asmFunc KartStatusOnMinimap1() {
 }
 kmCall(0x807EB1B0, KartStatusOnMinimap1);
 
+extern "C" void KartStatusEnd2(void*);
 asmFunc KartStatusOnMinimap2() {
   ASM(
     nofralloc;
@@ -81,6 +79,7 @@ asmFunc KartStatusOnMinimap2() {
 }
 kmCall(0x807EB6E0, KartStatusOnMinimap2);
 
+extern "C" void KartStatusEnd3(void*);
 asmFunc KartStatusOnMinimap3() {
   ASM(
   nofralloc;
@@ -315,7 +314,8 @@ loc_0x2D8:
 kmCall(0x807EB9CC, KartStatusOnMinimap3);
 
 asmFunc KartStatusOnMinimap4() {
-  ASM(nofralloc;
+  ASM(
+  nofralloc;
     lwz       r0, 0x8(r3);
     andis.    r12, r0, 0x4;
     beq-      loc_0x10;
