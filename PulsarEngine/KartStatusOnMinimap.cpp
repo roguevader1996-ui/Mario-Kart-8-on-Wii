@@ -2,7 +2,7 @@
 
 namespace Pulsar {
 namespace Race {
-	
+
 // 1st Place Crown on Minimap based on Crown() from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L558
 // Licensed under GPL v3, modified by RogueVader1996.
 asmFunc Crown() {
@@ -22,17 +22,21 @@ asmFunc Crown() {
     blt-      end;
     cmpwi     r12, 0x9;
     blt-      setCrownVisible;
+
   hasEnoughBattlePoints:
     lhz       r12, 0x22(r4);
     cmpwi     r12, 0x3;
     blt-      storeCrownVisibility;
+
   setCrownVisible:
     li        r11, 0x1;
+
   storeCrownVisibility:
     lwz       r12, 0x1B8(r28);
     stb       r11, 0x887(r12);
     lha       r11, 0xB8(r12);
     stb       r11, 0x884(r12);
+
   end:
     blr;
       )
