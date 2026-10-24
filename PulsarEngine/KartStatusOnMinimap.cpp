@@ -1,6 +1,7 @@
 #include <kamek.hpp>
 
-namespace Pack{
+namespace Pulsar {
+namespace Race {
 	
 // 1st Place Crown on Minimap based on Crown() from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L558
 // Licensed under GPL v3, modified by RogueVader1996.
@@ -54,6 +55,7 @@ asmFunc KartStatusOnMinimap1() {
     blr;
   )
 }
+kmCall(0x807EB1B0, KartStatusOnMinimap1);
 
 asmFunc KartStatusOnMinimap2() {
   ASM(
@@ -74,9 +76,10 @@ asmFunc KartStatusOnMinimap2() {
     beqlr-;    
 
   loc_0x38:
-    b KartStatusEnd2;
+    b         KartStatusEnd2;
   )
 }
+kmCall(0x807EB6E0, KartStatusOnMinimap2);
 
 asmFunc KartStatusOnMinimap3() {
   ASM(
@@ -307,8 +310,9 @@ loc_0x2CC:
 loc_0x2D8:
     lfs       f1, 0x0(r30);
     b         KartStatusEnd3;
-    )
+  )
 }
+kmCall(0x807EB9CC, KartStatusOnMinimap3);
 
 asmFunc KartStatusOnMinimap4() {
   ASM(nofralloc;
@@ -321,11 +325,7 @@ loc_0x10:
     blr;
   )
 }
+kmCall(0x807EB38C, KartStatusOnMinimap4);
 
-kmWrite32(0x807EB298, 0x48000034); //Kart Status On Minimap
-kmWrite32(0x807EB550, 0x38000000); //Kart Status On Minimap
-kmCall(0x807EB1B0, KartStatusOnMinimap1); //Kart Status On Minimap
-kmBranch(0x807EB6E0, KartStatusOnMinimap2); //Kart Status On Minimap
-kmBranch(0x807EB9CC, KartStatusOnMinimap3); //Kart Status On Minimap
-kmCall(0x807EB38C, KartStatusOnMinimap4); //Kart Status On Minimap
-}
+}//namespace Race
+}//namespace Pulsar
