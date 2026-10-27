@@ -1,10 +1,14 @@
 #include <kamek.hpp>
+#include <runtimeWrite.hpp>
 
 namespace Pulsar {
 namespace Race {
 
-// 1st Place Crown on Minimap based on Crown() from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L558
+// 1st Place Crown on Minimap based on Crown() from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/d83d31ece2ddf632227498907f2d6346f979095d/InsaneKartWii/PulsarEngine/UI/SettingsFeatures.cpp#L472
 // Licensed under GPL v3, modified by RogueVader1996.
+
+extern "C" void sInstance__8Racedata(void*);
+
 asmFunc Crown() {
   ASM(
     lwzx      r4, r4, r0;
@@ -12,18 +16,18 @@ asmFunc Crown() {
     lbz       r12, 0x20(r4);
     cmpwi     r12, 0x1;
     bne-      storeCrownVisibility;
-    lwz       r12, 0xD728(r3);
+    lwz       r12, sInstance__8Racedata@l(r3);
     lwz       r12, 0xB70(r12);
     cmpwi     r12, 0x2;
     blt-      setCrownVisible;
     cmpwi     r12, 0x3;
-    beq-      hasEnoughBattlePoints;
+    beq-      DetectFirstPlace;
     cmpwi     r12, 0x7;
     blt-      end;
     cmpwi     r12, 0x9;
     blt-      setCrownVisible;
 
-  hasEnoughBattlePoints:
+  DetectFirstPlace:
     lhz       r12, 0x22(r4);
     cmpwi     r12, 0x3;
     blt-      storeCrownVisibility;
@@ -44,8 +48,11 @@ asmFunc Crown() {
 kmCall(0x807EB490, Crown);
 
 
-// Kart Status On Minimap from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/2ecbdd3f0603118280ba10fca9cb5fe8fbc9cabc/PulsarEngine/UI/SettingsFeatures.cpp#L694
+// Kart Status On Minimap from Insane Kart Wii by the Insane Kart Wii contributors: https://github.com/insanekartwii/Insane-Kart-Wii/blob/d83d31ece2ddf632227498907f2d6346f979095d/InsaneKartWii/PulsarEngine/UI/SettingsFeatures.cpp#L605
 // Licensed under GPL v3.
+
+extern "C" void sInstance__10SectionMgr(void*);
+extern "C" void sInstance__Q24Kart7Manager(void*);
 
 asmFunc KartStatusOnMinimap1() {
   ASM(
@@ -53,6 +60,7 @@ asmFunc KartStatusOnMinimap1() {
     lwz       r3, 0x1B8(r30);
     lis       r4, 0xC020;
     stw       r4, 0x614(r3);
+    lis       r4, sInstance__10SectionMgr@ha;
     blr;
   )
 }
@@ -63,9 +71,9 @@ asmFunc KartStatusOnMinimap2() {
   ASM(
     nofralloc;
     stfs      f0, 0x48(r3);
-    lis       r5, 0x809C;
+    lis       r5, sInstance__8Racedata@ha;
     lbz       r12, 0x1B4(r28);
-    lwz       r11, 0xD728(r5);       // sInstance__8Racedata = 0x809bd728
+    lwz       r11, sInstance__8Racedata@l(r5);
     mulli     r12, r12, 0xF0;
     add       r11, r11, r12;
     lwz       r11, 0x38(r11);
@@ -87,9 +95,9 @@ extern "C" void KartStatusEnd3(void*);
 asmFunc KartStatusOnMinimap3() {
   ASM(
   nofralloc;
-    lis       r12, 0x809C;
-    lwz       r10, 0xD728(r12);       // sInstance__8Racedata = 0x809bd728
-    lwz       r12, 0x18F8(r12);       // sInstance__Q24Kart7Manager = 0x809c18f8
+    lis       r12, sInstance__8Racedata@ha;
+    lwz       r10, sInstance__8Racedata@l(r12);
+    lwz       r12, sInstance__Q24Kart7Manager@l(r12);
     lwz       r12, 0x20(r12);
     lbz       r11, 0x1B4(r28);
     mulli     r27, r11, 0xF0;
@@ -330,6 +338,14 @@ loc_0x10:
   )
 }
 kmCall(0x807EB38C, KartStatusOnMinimap4);
+
+kmRuntimeUse(0x807EB490); //Crown
+kmRuntimeUse(0x807EB38C); //Kart Status On Minimap
+kmRuntimeUse(0x807EB9CC); //Kart Status On Minimap
+kmRuntimeUse(0x807EB6E0); //Kart Status On Minimap
+kmRuntimeUse(0x807EB1B0); //Kart Status On Minimap
+kmRuntimeUse(0x807EB298); //Kart Status On Minimap
+kmRuntimeUse(0x807EB550); //Kart Status On Minimap
 
 }//namespace Race
 }//namespace Pulsar
