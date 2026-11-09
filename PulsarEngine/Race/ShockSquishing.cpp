@@ -1,6 +1,7 @@
 #include <kamek.hpp>
 
-namespace ShockSquishing {
+namespace Pulsar {
+namespace Race {
 
 //Shock Squishing [CLF78, Ro]
 asmFunc ShockSquick1() {
@@ -71,4 +72,5 @@ kmWrite8(0x805698cb, 0x00);
 kmWrite32(0x8056990c, 0x48000024);
 kmWrite32(0x80569948, 0x48000018);
 
-} //namespace ShockSquishing
+}//namespace Race
+}//namespace Pulsar

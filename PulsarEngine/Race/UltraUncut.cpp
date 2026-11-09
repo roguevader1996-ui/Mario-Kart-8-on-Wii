@@ -3,6 +3,9 @@
 // Ultra UnCut - ported from Insane Kart Wii (https://github.com/insanekartwii/Insane-Kart-Wii)
 // Original cheat code by MrBean35000vr and Chadderz
 
+namespace Pulsar {
+namespace Race {
+
 asmFunc UltraUncut() {
     ASM(
   lbz       r3, 0x1C(r29);
@@ -16,3 +19,6 @@ loc_0x10:
 }
 
 kmCall(0x8053511C, UltraUncut);
+
+}//namespace Race
+}//namespace Pulsar

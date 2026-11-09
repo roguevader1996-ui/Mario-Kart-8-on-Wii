@@ -1,13 +1,14 @@
 #include <kamek.hpp>
 
-namespace MK8oW {
+namespace Pulsar {
+namespace Race {
 
 kmWrite32(0x807BB8EC, 0x60000000); // Accurate Item Roulette v2 [Ro]
 
 kmWrite32(0x808A5380, 0x00000003); // Item Behavior Modifier - Rotating Triple Bananas [Luis]
 
-kmWrite32(0x80568778, 0x60000000); // Getting starred doesn't drop your item
-kmWrite32(0x80569084, 0x60000000); // Getting billed doesn't drop your item
+kmWrite32(0x80568778, 0x60000000); // Getting hit by Star/Cow/CM Car/rMC Piranha Plant doesn't drop your item
+kmWrite32(0x80569084, 0x60000000); // Getting hit by Bullet Bill doesn't drop your item
 
 kmWrite32(0x80856a28, 0x48000050); // Allow pausing before the race starts [Sponge]
 
@@ -55,4 +56,5 @@ kmWrite32(0x80553F98, 0x3880000A);
 kmWrite32(0x8084FEF0, 0x48000044);
 kmWrite32(0x80860A90, 0x38600000);
 
-}  // namespace MK8oW
+}//namespace Race
+}//namespace Pulsar
